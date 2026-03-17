@@ -1,7 +1,16 @@
 cmake_minimum_required(VERSION 3.22)
 project(Silo VERSION 1.0.0)
 
-add_subdirectory(/Users/abhishekshivakumar/spektra-ui/JUCE JUCE)
+if(NOT DEFINED JUCE_PATH)
+    set(JUCE_PATH "/Users/abhishekshivakumar/spektra-ui/JUCE")
+endif()
+add_subdirectory(${JUCE_PATH} JUCE)
+
+if(WIN32)
+    set(_FORMATS VST3 Standalone)
+else()
+    set(_FORMATS VST3 AU Standalone)
+endif()
 
 juce_add_plugin(Silo
     COMPANY_NAME "Quilio"
@@ -13,7 +22,7 @@ juce_add_plugin(Silo
     COPY_PLUGIN_AFTER_BUILD TRUE
     PLUGIN_MANUFACTURER_CODE Quil
     PLUGIN_CODE Silo
-    FORMATS VST3 AU
+    FORMATS ${_FORMATS}
     PRODUCT_NAME "Silo"
 )
 
