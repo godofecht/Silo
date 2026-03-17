@@ -6,6 +6,14 @@ if(NOT DEFINED JUCE_PATH)
 endif()
 add_subdirectory(${JUCE_PATH} JUCE)
 
+# Moonbase licensing SDK (must come after JUCE)
+add_subdirectory(Libs/moonbase_JUCEClient moonbase_JUCEClient)
+
+juce_add_binary_data(SiloLicenseData
+    SOURCES Assets/moonbase_api_config.json
+)
+set_target_properties(SiloLicenseData PROPERTIES POSITION_INDEPENDENT_CODE TRUE)
+
 if(WIN32)
     set(_FORMATS VST3 Standalone)
 else()
@@ -44,6 +52,9 @@ target_link_libraries(Silo PRIVATE
     juce::juce_audio_plugin_client
     juce::juce_dsp
     juce::juce_opengl
+    juce::juce_product_unlocking
+    moonbase_JUCEClient
+    SiloLicenseData
     PUBLIC
     juce::juce_recommended_config_flags
     juce::juce_recommended_lto_flags

@@ -1,5 +1,8 @@
 #include "PluginProcessor.h"
 #include "PluginEditor.h"
+#include <BinaryData.h>
+
+MOONBASE_IMPLEMENT_CONFIG_GETTER
 
 SiloProcessor::SiloProcessor()
     : AudioProcessor(BusesProperties()
@@ -7,10 +10,13 @@ SiloProcessor::SiloProcessor()
                          .withOutput("Output", juce::AudioChannelSet::stereo(), true)),
       fft(fftOrder),
       window(fftSize, juce::dsp::WindowingFunction<float>::hann)
-{}
-
-void SiloProcessor::prepareToPlay(double sr, int)
 {
+    moonbaseClient = MOONBASE_INIT_API("Quilio", "Silo", ProjectInfo::versionString);
+}
+
+void SiloProcessor::prepareToPlay(double sr, int samplesPerBlock)
+{
+    MOONBASE_PREPARE_TO_PLAY(sr, samplesPerBlock);
     currentSampleRate.store(sr);
     fftFillPos = 0;
     midWorkBuf.fill(0.f);

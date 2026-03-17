@@ -983,5 +983,8 @@ private:
     int  skipCount_ = 0;
 
     void timerCallback() override;
+
+    MOONBASE_DECLARE_ACTIVATION_UI;
+
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(SiloEditor)
 };

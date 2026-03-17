@@ -315,4 +315,6 @@ void SiloEditor::resized()
     btnFloor60 .setBounds(x, bY, 50, bH); x += 52;
     btnFloor80 .setBounds(x, bY, 50, bH); x += 52;
     btnFloor100.setBounds(x, bY, 56, bH);
+
+    MOONBASE_RESIZE_ACTIVATION_UI;
 }

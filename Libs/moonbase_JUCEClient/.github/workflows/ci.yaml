@@ -1,0 +1,72 @@
+name: CI
+
+on:
+  workflow_dispatch:
+  push:
+  pull_request:
+    branches:
+      - main
+      - next
+
+env:
+  HOMEBREW_NO_INSTALL_CLEANUP: 1
+  SCCACHE_GHA_ENABLED: true
+# SCCACHE_RECACHE: 1 # Uncomment this to clear cache, then comment it back out
+
+concurrency:
+  group: ${{ github.workflow }}.${{ github.ref }}
+  cancel-in-progress: true
+
+defaults:
+  run:
+    shell: bash
+
+permissions:
+  contents: read
+
+jobs:
+
+  BuildAndTest:
+    name: ${{ matrix.os }}, ${{ matrix.juce }}, C++${{ matrix.cpp }}
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 10
+    env:
+      SCCACHE_DIR: ${{ matrix.juce }}
+
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ warp-macos-14-arm64-6x, warp-windows-latest-x64-32x ]
+        juce: [ JUCE7, JUCE8 ]
+        cpp: [ 17, 20 ]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: true
+
+      - name: Use dev command prompt (Windows) # Handled by /tests/msvc-init/vcvarsall.sh now
+        uses: ilammy/msvc-dev-cmd@v1
+
+      - name: Install Ninja (Windows)
+        if: runner.os == 'Windows'
+        run: choco install ninja
+
+      - name: Install macOS Deps
+        if: ${{ runner.os == 'macOS' }}
+        run: brew install ninja osxutils
+
+      - name: Install Linux Deps
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update
+          sudo apt install libasound2-dev libjack-jackd2-dev ladspa-sdk libcurl4-openssl-dev libfreetype-dev libfontconfig1-dev libx11-dev libxcomposite-dev libxcursor-dev libxcursor-dev libxext-dev libxinerama-dev libxrandr-dev libxrender-dev libwebkit2gtk-4.0-dev libglu1-mesa-dev mesa-common-dev ninja-build
+
+      - name: Run sccache-cache
+        uses: mozilla-actions/sccache-action@v0.0.8
+
+      - name: Configure | Build | Test
+        shell: bash
+        run: |
+          ./tests/run.sh "${{ matrix.juce }}" "${{ matrix.cpp }}" github || exit $?

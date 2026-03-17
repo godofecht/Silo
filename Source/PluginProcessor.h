@@ -1,5 +1,6 @@
 #pragma once
 #include <JuceHeader.h>
+#include <moonbase_JUCEClient/moonbase_JUCEClient.h>
 #include <array>
 #include <atomic>
 
@@ -45,6 +46,8 @@ public:
 
     SiloProcessor();
     ~SiloProcessor() override = default;
+
+    MOONBASE_DECLARE_MEMBER;
 
     void prepareToPlay(double sampleRate, int) override;
     void releaseResources() override {}

@@ -1,0 +1,3 @@
+# We ignore any changes to the integrity check since it'll
+# have changes local to the public key being used during build.
+IntegrityCheck.h
