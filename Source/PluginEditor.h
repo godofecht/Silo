@@ -2,7 +2,7 @@
 #include <JuceHeader.h>
 #include "PluginProcessor.h"
 #include "SiloShaders.h"
-#include "../../shared/QuilioSplash.h"
+#include "QuilioSplash.h"
 
 using namespace juce::gl;
 
