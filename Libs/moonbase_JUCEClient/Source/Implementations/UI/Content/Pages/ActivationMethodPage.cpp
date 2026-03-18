@@ -17,7 +17,7 @@ ContentBase (parent, api_)
 
     autoActivationButton.setLookAndFeel (&narrowTextButtonLAF);
     offlineButton.setLookAndFeel (&textLinkLAF);
-    textLinkLAF.setColours ( juce::Colour (0xFF747474),  juce::Colour (0xFFD0D0D0));
+    textLinkLAF.setColours ( juce::Colour (0xFFD09090),  juce::Colour (0xFFFFFFFF));
 
     autoActivationButton.onClick = std::bind (&ActivationMethodPage::handleAutoActivateClicked, this);
     offlineButton.onClick = std::bind (&ActivationMethodPage::handleOfflineClicked, this);
@@ -64,11 +64,11 @@ void ActivationMethodPage::paint  (juce::Graphics& g)
 
     juce::Font f = Roboto::Regular ();
     g.setFont (f.withHeight (txt1Area.getHeight ()));
-    g.setColour ( juce::Colour(0xFFD0D0D0));
+    g.setColour ( juce::Colour(0xFFFFFFFF));
     g.drawText ("Opens your browser for", txt1Area,  juce::Justification::centred);
 
     g.setFont (f.withHeight (txt2Area.getHeight ()));
-    g.setColour ( juce::Colour(0xFFD0D0D0));
+    g.setColour ( juce::Colour(0xFFFFFFFF));
     g.drawText ("Trial & Activation", txt2Area,  juce::Justification::centred);
 }
 

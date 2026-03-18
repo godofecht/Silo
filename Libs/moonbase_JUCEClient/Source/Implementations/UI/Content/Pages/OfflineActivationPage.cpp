@@ -62,7 +62,7 @@ void OfflineActivationPage1::handleMachineFileButtonClicked ()
 void OfflineActivationPage1::paint  (juce::Graphics& g)
 {
     OfflineActivationPageBase::paint (g);
-    g.setColour ( juce::Colour (0xFF747474));
+    g.setColour ( juce::Colour (0xFFD09090));
 
      juce::Font f = Roboto::Regular ();
     g.setFont (f.withHeight (getHeight () * (0.035f)));
@@ -95,7 +95,7 @@ OfflineActivationPageBase (parent, api_)
     linkButton.setLookAndFeel (&textLinkLAF);
     linkButton.setName (api.getOfflineUrl ().toString (false).fromFirstOccurrenceOf ("https://", false, false));
     textLinkLAF.setUnderlined (true);
-    textLinkLAF.setColours ( juce::Colour (0xFFD0D0D0),  juce::Colour (0xFFD0D0D0).brighter ());
+    textLinkLAF.setColours ( juce::Colour (0xFFFFFFFF),  juce::Colour (0xFFFFFFFF).brighter ());
 
     addAndMakeVisible (nextButton);
     nextButton.onClick = std::bind (&OfflineActivationPage2::handleNextButtonClicked, this);
@@ -298,7 +298,7 @@ void OfflineActivationPage3::paint  (juce::Graphics& g)
     OfflineActivationPageBase::paint (g);
      juce::Font f = Roboto::Regular ();
     g.setFont (f.withHeight (txtArea.getHeight ()));
-    g.setColour ( juce::Colour (0xFFD0D0D0));
+    g.setColour ( juce::Colour (0xFFFFFFFF));
     g.drawText ("Drop your license file below", txtArea,  juce::Justification::centred, true);
 }
 

@@ -15,9 +15,9 @@ ContentBase (parent, api_)
         editor.setColour (juce::TextEditor::focusedOutlineColourId, juce::Colours::transparentBlack);
         editor.setColour (juce::TextEditor::backgroundColourId, juce::Colours::transparentBlack);
         editor.setColour (juce::TextEditor::highlightColourId, juce::Colours::white.withAlpha (0.35f));
-        editor.setColour (juce::TextEditor::highlightedTextColourId,  juce::Colour (0xFFD0D0D0));
-        editor.setColour (juce::TextEditor::textColourId,  juce::Colour (0xFFD0D0D0));
-        editor.setColour (juce::CaretComponent::caretColourId,  juce::Colour (0xFFD0D0D0));
+        editor.setColour (juce::TextEditor::highlightedTextColourId,  juce::Colour (0xFFFFFFFF));
+        editor.setColour (juce::TextEditor::textColourId,  juce::Colour (0xFFFFFFFF));
+        editor.setColour (juce::CaretComponent::caretColourId,  juce::Colour (0xFFFFFFFF));
         editor.onTextChange = std::bind (&LoginPage::textEditorsChanged, this);
         editor.onReturnKey = std::bind (&LoginPage::loginButtonClicked, this);
     };
@@ -100,7 +100,7 @@ void LoginPage::paint  (juce::Graphics& g)
     const auto passwordTextArea = passwordEditor.getBounds ().translated (headlineTranslationX, headlineTranslationY);
 
      juce::Font f (Roboto::Regular ().withHeight (getHeight () * (0.035f)));
-    g.setColour ( juce::Colour (0xFFD0D0D0));
+    g.setColour ( juce::Colour (0xFFFFFFFF));
     g.setFont (f);
     g.drawText ("E-Mail", emailTextArea,  juce::Justification::topLeft);
     g.drawText ("Password", passwordTextArea,  juce::Justification::topLeft);

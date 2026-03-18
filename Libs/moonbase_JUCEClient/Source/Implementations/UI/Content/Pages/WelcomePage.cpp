@@ -73,7 +73,7 @@ void WelcomePage::paint  (juce::Graphics& g)
         const auto line2Y = line1Y + lineSpacing;
 
         g.setFont (getHeight () * (0.05f));
-        g.setColour ( juce::Colour(0xFFD0D0D0));
+        g.setColour ( juce::Colour(0xFFFFFFFF));
 
         g.drawText (line1, area.withCentre ({area.getCentreX(), line1Y}),  juce::Justification::centred);
         g.drawText (line2, area.withCentre ({area.getCentreX(), line2Y}),  juce::Justification::centred);

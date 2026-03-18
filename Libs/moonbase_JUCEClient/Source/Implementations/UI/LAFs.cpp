@@ -185,7 +185,7 @@ static inline void MB_ReduceClipRegion  (juce::Graphics&g, const  juce::Rectangl
     const auto textHeight = font.getHeight (); \
     const auto textX = area.getX () + (area.getWidth () - textWidth) / 2; \
     const auto textY = area.getY () + (area.getHeight () - textHeight) / 2; \
-    g.setColour ( juce::Colour (0xFFF0F0F0)); \
+    g.setColour ( juce::Colour (0xFFFFFFFF)); \
     g.setFont (font); \
     g.drawText (text, textX, textY, textWidth, textHeight,  juce::Justification::centred); \
     const auto enabled = b.isEnabled (); \
@@ -283,7 +283,7 @@ int TextEditorLAF::getWidthForHeight (int height)
 //==============================================================================
 TextLinkLAF::TextLinkLAF ()
 {
-    colours [0] =  juce::Colour (0xFFD0D0D0);
+    colours [0] =  juce::Colour (0xFFFFFFFF);
     colours [1] =  juce::Colour (0xFF747474);
 }
 
@@ -340,7 +340,7 @@ void RadioButtonLAF::drawToggleButton  (juce::Graphics& g, juce::ToggleButton& b
 
     const auto fontHeight = area.getHeight () * (0.85f);
     g.setFont (font.withHeight (fontHeight));
-    g.setColour ( juce::Colour (0xFFD0D0D0));
+    g.setColour ( juce::Colour (0xFFFFFFFF));
     g.drawText (text, area, juce::Justification::centredLeft);
 
     if (auto& icon = buttonIcon [state][down ? 2 : over])

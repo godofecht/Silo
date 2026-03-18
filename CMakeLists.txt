@@ -11,6 +11,7 @@ add_subdirectory(Libs/moonbase_JUCEClient moonbase_JUCEClient)
 
 juce_add_binary_data(SiloLicenseData
     SOURCES Assets/moonbase_api_config.json
+            Assets/quilio_Q.png
 )
 set_target_properties(SiloLicenseData PROPERTIES POSITION_INDEPENDENT_CODE TRUE)
 
@@ -32,6 +33,7 @@ juce_add_plugin(Silo
     PLUGIN_CODE Silo
     FORMATS ${_FORMATS}
     PRODUCT_NAME "Silo"
+    ICON_BIG                "${CMAKE_CURRENT_SOURCE_DIR}/Assets/icon.jpg"
 )
 
 juce_generate_juce_header(Silo)

@@ -27,7 +27,7 @@ errorDisplay (api)
     addAndMakeVisible (errorDisplay);
 
     addChildComponent (waitingOverlay);
-    waitingOverlay.setBgColours ( juce::Colour (0xFF141414),  juce::Colour (0xFF141414));
+    waitingOverlay.setBgColours ( juce::Colour (0xFF2A1A30),  juce::Colour (0xFF2A1A30));
     waitingOverlay.setAlwaysOnTop (true);
 
     juce::WeakReference<ContentBase> weakThis (this);
@@ -103,11 +103,11 @@ void ContentBase::paint  (juce::Graphics& g)
 
     juce::Font f = Roboto::Regular ();
     g.setFont (f.withHeight (titleArea.getHeight ()));
-    g.setColour ( juce::Colour (0xFFD0D0D0));
+    g.setColour ( juce::Colour (0xFFFFFFFF));
     g.drawText (title, titleArea,  juce::Justification::centred);
 
     g.setFont (f.withHeight (subtitleArea.getHeight ()));
-    g.setColour ( juce::Colour (0xFF747474));
+    g.setColour ( juce::Colour (0xFFD09090));
     g.drawText (subtitle, subtitleArea,  juce::Justification::centred);
 }
 

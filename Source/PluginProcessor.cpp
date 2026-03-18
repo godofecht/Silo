@@ -28,6 +28,7 @@ void SiloProcessor::prepareToPlay(double sr, int samplesPerBlock)
 
 void SiloProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::MidiBuffer&)
 {
+    MOONBASE_PROCESS(buffer);
     const int n = buffer.getNumSamples();
     const int ch = buffer.getNumChannels();
     const float* L = ch > 0 ? buffer.getReadPointer(0) : nullptr;

@@ -208,9 +208,9 @@ void UpdateBadge::paint (juce::Graphics& g)
     const auto area = getLocalBounds ().toFloat ().reduced (1.f);
     
     const juce::ColourGradient gradient {
-        juce::Colour (0xFF181818), 
+        juce::Colour (0xFF2A1A30), 
         juce::Point<float> (area.getWidth () * 0.5f, 0.f),
-        juce::Colour (0xFF101010),
+        juce::Colour (0xFF1A1028),
         juce::Point<float> (area.getWidth () * 0.5f, area.getHeight ()),
         false
     };
@@ -219,7 +219,7 @@ void UpdateBadge::paint (juce::Graphics& g)
     const auto cornerSize = 15.f;
     g.fillRoundedRectangle (area, cornerSize);
 
-    juce::Colour borderColour { 0xFF5465FF };
+    juce::Colour borderColour { 0xFFE8946A };
     if (isMouseOver () || updateButton.isMouseOver ())
         borderColour = borderColour.brighter ();
 

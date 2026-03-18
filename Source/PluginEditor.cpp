@@ -1,4 +1,5 @@
 #include "PluginEditor.h"
+#include <BinaryData.h>
 
 // ── Layout constants ──────────────────────────────────────────────────────────
 static constexpr int kOuter  = 8;    // outer margin all sides
@@ -128,6 +129,8 @@ SiloEditor::SiloEditor(SiloProcessor& p)
     setResizable(true, false);
     setResizeLimits(800, 480, 2400, 1350);
     setSize(1200, 620);
+    addAndMakeVisible(splashOverlay); splashOverlay.toFront(false);
+    QuilioSplash::themeActivationUI(activationUI, "Silo");
     startTimerHz(30);
 }
 
@@ -317,4 +320,5 @@ void SiloEditor::resized()
     btnFloor100.setBounds(x, bY, 56, bH);
 
     MOONBASE_RESIZE_ACTIVATION_UI;
+    splashOverlay.setBounds(getLocalBounds()); splashOverlay.toFront(false);
 }

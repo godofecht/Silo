@@ -18,8 +18,8 @@ ActivatedPage::ActivatedPage (ContentHolder& parent, API& api_)
     text.setColour (juce::TextEditor::ColourIds::outlineColourId,  juce::Colour (0));
     text.setColour (juce::TextEditor::ColourIds::focusedOutlineColourId,  juce::Colour (0));
     text.setColour (juce::TextEditor::ColourIds::highlightColourId, juce::Colours::white.withAlpha (0.15f));
-    text.setColour (juce::TextEditor::ColourIds::highlightedTextColourId,  juce::Colour (0xFFD0D0D0));
-    text.setColour (juce::TextEditor::ColourIds::textColourId,  juce::Colour (0xFFD0D0D0));
+    text.setColour (juce::TextEditor::ColourIds::highlightedTextColourId,  juce::Colour (0xFFFFFFFF));
+    text.setColour (juce::TextEditor::ColourIds::textColourId,  juce::Colour (0xFFFFFFFF));
 
     addChildComponent (deactivateButton);
     deactivateButton.onClick = std::bind (&ActivatedPage::handleDeactivateButtonClicked, this);
@@ -46,7 +46,7 @@ void ActivatedPage::pageBecomingVisible ()
 
     text.setText (content);
     text.setJustification ( juce::Justification::centred);
-    text.applyColourToAllText ( juce::Colour (0xFFD0D0D0));
+    text.applyColourToAllText ( juce::Colour (0xFFFFFFFF));
 
     addChildComponent (waitingOverlay);
 

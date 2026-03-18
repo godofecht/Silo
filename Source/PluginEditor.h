@@ -2,6 +2,7 @@
 #include <JuceHeader.h>
 #include "PluginProcessor.h"
 #include "SiloShaders.h"
+#include "../../shared/QuilioSplash.h"
 
 using namespace juce::gl;
 
@@ -984,7 +985,10 @@ private:
 
     void timerCallback() override;
 
-    MOONBASE_DECLARE_ACTIVATION_UI;
+    QuilioSplash quilioSplash;
+    QuilioSplashOverlay splashOverlay { quilioSplash };
+
+    MOONBASE_DECLARE_AND_INIT_ACTIVATION_UI(proc);
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(SiloEditor)
 };
